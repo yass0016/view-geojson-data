@@ -64,3 +64,5 @@ To use this package on a GeoView project, you need to import it in a script tag 
   "version": "1.0"
 }
 ```
+
+To view a usecase demo visit [NHS Projects Map](https://github.com/yass0016/nhs-projects-map)
