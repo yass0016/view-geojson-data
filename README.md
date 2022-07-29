@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# View GeoJSON Data Package
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a practical usecase for a package for GeoView that allows the user to load GeoJSON data to the map and then preview it's properties on a panel when a user clicks on a feature on the map.
 
-## Available Scripts
+## Building the package
 
-In the project directory, you can run:
+The package was created using React. To build it you first need to clone this repo
 
-### `npm start`
+### Clone the repo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+git clone https://github.com/yass0016/view-geojson-data.git
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Install dependencies
 
-### `npm test`
+```
+cd view-geojson-data
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Build package
 
-### `npm run build`
+```
+npm run build
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+After the package is built, you should see a new folder called `build`, inside you will find the package bundle script.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+build/static/js/main*.js
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Using the package
 
-### `npm run eject`
+To use this package on a GeoView project, you need to import it in a script tag on your HTML file. Then in the map config of GeoView you need to tell GeoView that you want to load this package by adding it under `externalPackages`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```json
+{
+  "map": {
+    "interaction": "dynamic",
+    "view": {
+      "zoom": 12,
+      "center": [-100, 60],
+      "projection": 3978
+    },
+    "basemapOptions": {
+      "id": "transport",
+      "shaded": true,
+      "labeled": true
+    },
+    "layers": []
+  },
+  "theme": "dark",
+  "components": ["appbar", "navbar", "north-arrow", "overview-map"],
+  "corePackages": [],
+  "externalPackages": [
+    {
+      "name": "view-geojson-data",
+      "configUrl": "./view-geojson-data-config.json"
+    }
+  ],
+  "languages": ["en-CA", "fr-CA"],
+  "version": "1.0"
+}
+```

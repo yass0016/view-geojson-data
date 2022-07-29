@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "",
+  "type": "object",
+  "version": 1.0,
+  "comments": "Configuration schema for view geojson data package",
+  "additionalProperties": false,
+  "properties": {
+    "isOpen": {
+      "type": "boolean",
+      "description": "Specifies whether the view geojson data panel is initially open or closed",
+      "default": false
+    },
+    "enablePanel": {
+      "type": "boolean",
+      "description": "Specifies whether a panel will open on feature click",
+      "default": false
+    },
+    "enableTooltip": {
+      "type": "boolean",
+      "description": "Specifies whether a tooltip will be displayed on feature hover",
+      "default": true
+    },
+    "geoJsonPath": {
+      "type": "string",
+      "description": "Path to the geojson file"
+    }
+  },
+  "required": ["geoJsonPath", "enablePanel", "enableTooltip"]
+}
